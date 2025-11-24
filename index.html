@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Proposal for Myhafizaaa 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+  /* General Reset */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%);
+    color: #4a148c;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    padding: 10px;
+  }
+  /* Container */
+  .container {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+    padding: 30px 35px;
+    position: relative;
+  }
+
+  /* Enhanced Hearts animation background */
+  body::before {
+    content: "❤️💕💕❤️💖💞💘💓";
+    position: fixed;
+    top: 10%;
+    left: -10%;
+    font-size: 60px;
+    color: rgba(255, 105, 180, 0.3);
+    animation: heartFloat 20s linear infinite;
+    user-select: none;
+    pointer-events: none;
+  }
+  body::after {
+    content: "💕💖💘💓❤️💕";
+    position: fixed;
+    bottom: 10%;
+    right: -10%;
+    font-size: 50px;
+    color: rgba(255, 192, 203, 0.2);
+    animation: heartFloatReverse 25s linear infinite;
+    user-select: none;
+    pointer-events: none;
+  }
+  @keyframes heartFloat {
+    0% { transform: translateX(0) translateY(0) rotate(0deg); }
+    50% { transform: translateX(120vw) translateY(-60vh) rotate(180deg);}
+    100% { transform: translateX(0) translateY(0) rotate(360deg);}
+  }
+  @keyframes heartFloatReverse {
+    0% { transform: translateX(0) translateY(0) rotate(360deg); }
+    50% { transform: translateX(-120vw) translateY(60vh) rotate(180deg);}
+    100% { transform: translateX(0) translateY(0) rotate(0deg);}
+  }
+
+  /* Titles and text */
+  h1, h2 {
+    font-weight: 900;
+    text-align: center;
+    color: #880e4f;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 3px rgba(255, 192, 203, 0.6);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #6a1b9a;
+  }
+
+  /* Popup modal styles */
+  #proposalModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(139, 0, 54, 0.9);
+    z-index: 9999;
+    animation: fadeIn 0.7s ease forwards;
+  }
+  #proposalModal .modal-content {
+    background: linear-gradient(135deg, #ec407a, #ab47bc);
+    width: 90%;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 30px;
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(255, 20, 147, 0.5);
+    text-align: center;
+    animation: popupScale 0.5s ease forwards;
+  }
+  #proposalModal h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    user-select: none;
+  }
+  #proposalModal p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    user-select: none;
+  }
+  
+  /* Buttons */
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    padding: 12px 28px;
+    font-weight: 700;
+    box-shadow: none;
+    min-width: 120px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .continue {
+    background-color: #ff4081;
+    color: #fff;
+  }
+  .continue:hover, .continue:focus {
+    background-color: #f50057;
+    box-shadow: 0 0 10px #f50057aa;
+    outline: none;
+  }
+  .cancel {
+    background-color: #ad1457;
+    color: #fff;
+  }
+  .cancel:hover, .cancel:focus {
+    background-color: #880e4f;
+    box-shadow: 0 0 10px #880e4faa;
+    outline: none;
+  }
+
+  /* Hidden sections */
+  .hidden {
+    display: none;
+  }
+
+  /* Main & next screens styling */
+  .screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+  }
+  .screen.active {
+    display: flex;
+  }
+
+  /* Heading styling for main and next screens */
+  .screen h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #880e4f;
+    text-shadow: 1px 1px 3px #f48fb1;
+    animation: pulse 4s ease-in-out infinite;
+  }
+  .screen p {
+    max-width: 500px;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #6a1b9a;
+    text-align: center;
+  }
+  /* Reminder text styling */
+  .reminder-text {
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 25px;
+  }
+
+  /* Link style in the last screen */
+  .final-link {
+    color: #d81b60;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.3rem;
+    border: 2px solid #d81b60;
+    padding: 10px 20px;
+    border-radius: 40px;
+    box-shadow: 0 4px 15px #f06292aa;
+    user-select: text;
+    animation: pulse 5s ease-in-out infinite;
+  }
+  .final-link:hover, .final-link:focus {
+    background-color: #d81b60;
+    color: white;
+    outline: none;
+  }
+
+  /* Clock emoji inline style spacing */
+  .emoji-inline {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  /* Continue button on main and next pages */
+  .continue-button {
+    background-color: #d81b60;
+    color: white;
+    padding: 14px 36px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border-radius: 40px;
+    border: none;
+    box-shadow: 0 5px 20px rgba(216, 27, 96, 0.6);
+    transition: 0.3s ease background-color, 0.3s ease box-shadow;
+    animation: pulse 3.5s ease-in-out infinite;
+  }
+  .continue-button:hover, .continue-button:focus {
+    background-color: #880e4f;
+    box-shadow: 0 7px 25px rgba(136, 14, 79, 0.8);
+    outline: none;
+  }
+
+  /* Pulse animation for romantic effect */
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  /* Smaller devices */
+  @media(max-width: 480px) {
+    .modal-content {
+      width: 95%;
+      padding: 25px;
+    }
+    .screen h1 {
+      font-size: 1.7rem;
+    }
+    .screen p, .reminder-text {
+      font-size: 1rem;
+      padding: 0 8px;
+    }
+    .continue-button {
+      padding: 12px 30px;
+      font-size: 1rem;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<div id="proposalModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="proposalTitle" aria-describedby="proposalText">
+  <div class="modal-content">
+    <h1 id="proposalTitle">
+      <span aria-hidden="true" style="font-size:28px;">❤️</span><br/>
+      A Special Proposal For Myhafizaaa<br/>
+      <span aria-hidden="true" style="font-size:28px;">❤️</span>
+    </h1>
+    <p id="proposalText">Maybe this is not the best date you've ever had but i'll try to make it the best date you ever had sayangg ✨☄️✨</p>
+    <button class="continue continue-button" onclick="acceptProposal()" aria-label="Accept Proposal and Continue">Continue</button>
+    <button class="cancel continue-button" onclick="rejectProposal()" aria-label="Decline Proposal">Cancel</button>
+  </div>
+</div>
+
+<div class="container" role="main">
+
+  <section id="mainPage" class="screen hidden" tabindex="-1" aria-labelledby="mainTitle" aria-describedby="mainReminder">
+    <h1 id="mainTitle">Yeayy ! Thank you sayanggg &lt;333 <span class="heart">💕💕</span></h1>
+    <p id="mainReminder" class="reminder-text">Before we go to my plan en i nak remind yang no skirt, jubah, telekung and seangkatan dengannya allowed. hehe &lt;3333</p>
+    <button class="continue-button" onclick="showNextScreen()" aria-label="Continue to the plan">Continue</button>
+  </section>
+
+  <section id="nextScreen" class="screen hidden" tabindex="-1" aria-label="Date Plan">
+    <h1>Here's the Plan! <span class="heart">💕</span> Make sure on time ya sayangg &lt;3333</h1>
+    <p style="text-align:left; max-width: 100%;">
+      Our date <span class="heart">💕</span> starts at...<br/>
+      3.00 pm <span class="emoji-inline" role="img" aria-label="clock emoji">⏰</span> : Mr. Aqmal pickup Myhafiza at UUM with a <span role="img" aria-label="car">🚗</span> and goes to our first destination.<br/><br/>
+      4.00 pm <span class="emoji-inline" role="img" aria-label="clock emoji">⏰</span> : arrive at Bukit Chabang <span role="img" aria-label="mountain">⛰️</span> and play with goattt <span role="img" aria-label="goat">🐐</span> until 5:30 pm <span class="emoji-inline" role="img" aria-label="clock emoji">⏰</span> and goes to our next destination.<br/><br/>
+      6.00 pm <span class="emoji-inline" role="img" aria-label="clock emoji">⏰</span> : we both arrive at our next destination Tasik Timah Tasoh <span role="img" aria-label="water waves">🌊</span>.<br/><br/>
+      6:30 pm <span class="emoji-inline" role="img" aria-label="clock emoji">⏰</span> : we both go to the main activity — ride a boat to explore the wholeee of the tasik and watch the sunset <span role="img" aria-label="sunset">🌅</span>. hehe don't worry kita pakai lifejacket nantiii.<br/><br/>
+      7:30 pm <span class="emoji-inline" role="img" aria-label="clock emoji">⏰</span> : we go for a dinner la lepas tu mesti lapar punyaaa.<br/><br/>
+      8:15 pm <span class="emoji-inline" role="img" aria-label="clock emoji">⏰</span> : we both arrive at Terang Malam Kangar and have a dinner <span role="img" aria-label="plate with fork and spoon">🍽️</span>.<br/><br/>
+      10.00 pm <span class="emoji-inline" role="img" aria-label="clock emoji">⏰</span> : we both back to UUM untuk hantar you balikk <span role="img" aria-label="sad face">😞</span><span role="img" aria-label="crying face">😢</span>
+    </p>
+    <button class="continue-button" onclick="showFinalScreen()" aria-label="Continue to inquiries">Continue</button>
+  </section>
+
+  <section id="finalScreen" class="screen hidden" tabindex="-1" aria-label="Inquiries">
+    <h1 style="color:#e91e63;">For more inquiries you can contact me</h1>
+    <p style="font-size:18px;">
+      Kita negara yang demokrasi dan merdeka pada 31.8.1957 jadi dengan ini tiada paksaan untuk anda selaku pujaan hati saya untuk membantah atau menyuarakan pendapat <span role="img" aria-label="love emoji">❤️</span>.
+    </p>
+    <p style="font-size:16px; font-style:italic; color:#880e4f;">"Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day." 💕</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScYmkaCaSKYf1QokE3CtwUwhZ9g2nc97CsHQQ-Dj61HdG8djA/viewform?usp=header" 
+       target="_blank" rel="noopener" class="final-link" aria-label="Google Form for inquiries">
+      Click here to access the inquiry form
+    </a>
+  </section>
+
+</div>
+
+<script>
+  function acceptProposal() {
+    document.getElementById('proposalModal').style.display = 'none';
+    document.getElementById('mainPage').classList.remove('hidden');
+    document.getElementById('mainPage').classList.add('active');
+    document.getElementById('mainPage').focus();
+    document.body.style.overflow = 'auto';
+  }
+
+  function rejectProposal() {
+    alert("Error: Proposal rejected! 😢 Please reconsider? (Just kidding, but seriously, think about it!)");
+  }
+
+  function showNextScreen() {
+    document.getElementById('mainPage').classList.remove('active');
+    document.getElementById('mainPage').classList.add('hidden');
+    document.getElementById('nextScreen').classList.remove('hidden');
+    document.getElementById('nextScreen').classList.add('active');
+    document.getElementById('nextScreen').focus();
+    window.scrollTo(0, 0);
+  }
+
+  function showFinalScreen() {
+    document.getElementById('nextScreen').classList.remove('active');
+    document.getElementById('nextScreen').classList.add('hidden');
+    document.getElementById('finalScreen').classList.remove('hidden');
+    document.getElementById('finalScreen').classList.add('active');
+    document.getElementById('finalScreen').focus();
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
+</html>
