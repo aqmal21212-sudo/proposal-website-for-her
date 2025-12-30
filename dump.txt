@@ -1,0 +1,171 @@
+<!-- MULAI FAIL PERTAMA: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prank Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f0f0f0;
+        }
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #noButton {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="question">Want to know something?</div>
+    <button id="yesButton">Yes</button>
+    <button id="noButton">No</button>
+
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+
+        yesButton.addEventListener('click', () => {
+            window.location.href = 'next.html';
+        });
+
+        noButton.addEventListener('mouseover', moveButton);
+        noButton.addEventListener('click', moveButton);
+
+        function moveButton() {
+            const maxX = window.innerWidth - noButton.offsetWidth;
+            const maxY = window.innerHeight - noButton.offsetHeight;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+        }
+    </script>
+</body>
+</html>
+<!-- TAMAT FAIL PERTAMA: index.html -->
+
+<!-- MULAI FAIL KEDUA: next.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Surprise</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffe6f2, #ffb3d9, #ff69b4);
+            color: #ff1493;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+                              radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+                              radial-gradient(1px 1px at 90px 40px, #fff, transparent);
+            background-repeat: repeat;
+            background-size: 100px 100px;
+            opacity: 0.5;
+        }
+        .message {
+            font-size: 50px;
+            font-weight: bold;
+            margin-top: 100px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .submessage {
+            font-size: 28px;
+            margin: 20px 0;
+        }
+        .hearts {
+            font-size: 70px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+        .extra-hearts {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0.8;
+            animation: float 5s ease-in-out infinite;
+        }
+        .heart1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .heart2 { top: 20%; right: 15%; animation-delay: 1s; }
+        .heart3 { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .heart4 { bottom: 20%; right: 10%; animation-delay: 3s; }
+        .heart5 { top: 50%; left: 50%; animation-delay: 4s; }
+        .heart6 { top: 30%; left: 70%; animation-delay: 5s; }
+        .heart7 { bottom: 50%; right: 30%; animation-delay: 6s; }
+        .heart8 { top: 70%; left: 30%; animation-delay: 7s; }
+        .heart9 { bottom: 10%; left: 50%; animation-delay: 8s; }
+        .heart10 { top: 40%; right: 50%; animation-delay: 9s; }
+        .confetti {
+            position: absolute;
+            font-size: 20px;
+            animation: fall 10s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .confetti:nth-child(odd) { left: 10%; animation-delay: 0s; }
+        .confetti:nth-child(even) { left: 90%; animation-delay: 5s; }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="message">I LOVE YOUUUUU &lt;3333333</div>
+    <div class="submessage">My heart beats for you! You're the one! Forever yours ❤️</div>
+    <div class="hearts">❤️❤️❤️❤️❤️</div>
+    
+    <div class="extra-hearts heart1">💖</div>
+    <div class="extra-hearts heart2">💕</div>
+    <div class="extra-hearts heart3">💗</div>
+    <div class="extra-hearts heart4">💓</div>
+    <div class="extra-hearts heart5">💘</div>
+    <div class="extra-hearts heart6">💞</div>
+    <div class="extra-hearts heart7">💝</div>
+    <div class="extra-hearts heart8">💟</div>
+    <div class="extra-hearts heart9">💌</div>
+    <div class="extra-hearts heart10">💋</div>
+    
+    <div class="confetti">❤️</div>
+    <div class="confetti">💖</div>
+    <div class="confetti">💕</div>
+    <div class="confetti">💗</div>
+    
+    <audio autoplay loop>
+        <source src="romantic-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+</html>
+<!-- TAMAT FAIL KEDUA: next.html -->
